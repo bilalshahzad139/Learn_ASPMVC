@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_ComplexUserLayout.cshtml";
+    ViewBag.Title = "Simple ViewModel of List Type Practice";
+}
+
+@* To use ViewModel, first we need to declare type of our 'ViewModel' object *@
+
+@model List<ViewsRazorPrac.Models.ComplexUserDTO>
+
+
+<h2>Simple ViewModel of List Type Practice</h2>
+
+
+@*To access provided object to view from controler, we use 'Model' object*@
+@foreach (var item in Model)
+{
+    //here item contains our single object of type 'ComplexUserDTO'
+    <div class="userdetails">
+        UserName: @item.UserName
+        <br />
+        Company: @item.Company
+        <br />
+        Country: @item.Country
+        <br />
+    </div>
+}

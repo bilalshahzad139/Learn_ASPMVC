@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section submenu{
+    <a href="/JSBasicUser/Home">Home</a>
+    <a href="/JSBasicUser/CreateUser">Create User Demo</a>
+    <a href="/JSBasicUser/ShowAll">Show All Demo</a>
+
+}
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+}
+
+@RenderBody()

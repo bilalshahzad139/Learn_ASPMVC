@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_ComplexUserLayout.cshtml";
+    ViewBag.Title = "ViewModel-Edit Practice";
+}
+
+@* To use ViewModel, first we need to declare type of our 'ViewModel' object *@
+
+@model ViewsRazorPrac.Models.ComplexUserDTO
+
+
+<h2>ViewModel-Edit Practice</h2>
+
+
+@*To access provided object to view from controler, we use 'Model' object*@
+<p>UserName:
+    <input type="text" value="@Model.UserName" /></p>
+<p>Company:
+    <input type="text" value="@Model.Company" />
+</p>
+<p>Country:
+    @Html.TextBox("Country",@Model.Country)
+</p>

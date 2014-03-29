@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "ViewData Practice";
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+}
+
+
+<h2>ViewData Practice</h2>
+
+<p>'ViewData' is of type 'ViewDataDictionary', data are stored against Key,Value pair format
+    Values stored in ViewBag can be accessed through 'ViewData' and vice versa
+    </p>
+
+<br />
+
+<span>ViewData["ID"]: @ViewData["ID"]</span> <br />
+<span>ViewBag.Message: @ViewBag.Message</span> <br />
+
+<br />
+
+@{
+    var dto = ViewData["Data"] as ViewsRazorPrac.Models.BasicUserDTO;
+ }
+
+
+<div>User Name: @dto.UserName</div>
+<div>Company: @dto.Company</div>
+
+

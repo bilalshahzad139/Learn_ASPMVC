@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_MoreComplexUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Custom Model Binder";
+}
+
+<h2>Custom Model Binder</h2>
+
+<div>
+    <form action="/MoreComplexUser/SaveUser7" method="post">
+        <div>
+            Name:
+    <input type="text" name="UserName" id="username" />
+            <br />
+            Company:
+    <input type="text" name="Company" id="company" />
+            <br />
+          DOB:<input type="text" name="day" style="width:40px" /> 
+            <input type="text" name="month" style="width:40px"/>
+            <input type="text" name="year" style="width:40px"/>
+            <span>DD/MM/YYYY</span>
+            <br />
+            <input type="submit" value="Create" />
+            <br />
+            <span style="color: red">@ViewBag.Msg</span>
+        </div>
+    </form>
+
+</div>
+

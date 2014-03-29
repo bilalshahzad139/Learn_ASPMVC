@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_JSBasicUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Show All";
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        //jquery Ready function
+        $(document).ready(function () {
+
+            //Create Javascript object to pass to .ajax() function
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/JSBasicUser/GetAll",
+                success: function (data) {
+                    Generate(data);
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            jQuery.ajax(settings);
+
+        });//End of Ready function
+
+        function Generate(data) {
+
+            var $tbody = $("#tabledata");
+            var $tr;
+            var td;
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+
+                $tr = $("<tr>");
+
+                td = $("<td>").text(obj.FirstName);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.LastName);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.Gender);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.DOB);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.City);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.Login);
+                $tr.append(td);
+
+                td = $("<td>").text(obj.EntryDate);
+                $tr.append(td);
+
+
+                $tbody.append($tr);
+            }
+
+        }
+
+    </script>
+
+}
+
+
+<h2>All Users</h2>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Gender</td>
+            <td>DOB</td>
+            <td>City</td>
+            <td>Login</td>
+            <td>Entry Date</td>
+        </tr>
+    </thead>
+    <tbody id="tabledata">
+    </tbody>
+</table>

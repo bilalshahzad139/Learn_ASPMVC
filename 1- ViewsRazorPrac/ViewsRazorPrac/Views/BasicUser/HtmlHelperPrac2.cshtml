@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "HTML Helper Prac 2";
+}
+
+
+<h2>HTML Helper Prac 2</h2>
+
+
+<h1>Html.Action() Example</h1>
+<div class="userdetails">
+    @Html.Action("TestView", "BasicUser")
+</div>
+
+<h1>Html.RenderAction() Example</h1>
+<div class="userdetails">
+    @{
+        Html.RenderAction("TestView", "BasicUser");
+    }
+</div>
+
+
+<h1>Html.Partial() Example</h1>
+<div class="userdetails">
+    @Html.Partial("TestView", "BasicUser")
+</div>
+
+<div class="userdetails">
+    @Html.Partial("PartialViewPrac", "BasicUser")
+</div>
+
+
+<h1>Html.RenderPartial() Example</h1>
+<div class="userdetails">
+    @{
+        Html.RenderPartial("TestView", "BasicUser");
+    }
+</div>

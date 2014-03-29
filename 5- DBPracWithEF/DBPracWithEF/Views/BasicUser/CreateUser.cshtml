@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+    ViewBag.Title = "Create User";
+}
+
+
+@model DBPracWithEF.Models.Users
+
+
+@using (Html.BeginForm("SaveUser", "BasicUser", FormMethod.Post))
+{
+    @Html.HiddenFor(p=> p.UserID)
+
+    <span>First Name:</span>
+    @Html.EditorFor(p => p.FirstName) <br />
+
+    <span>Last Name:</span>
+    @Html.EditorFor(p => p.LastName) <br />
+    
+    <span>Gender:</span>
+    <select name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select> <br />
+    
+    <span>DOB:</span>
+    @Html.EditorFor(p => p.DOB) <br />
+    
+    <span>City:</span>
+    <select name="City">
+        <option value="Lahore">Lahore</option>
+        <option value="Karachi">Karachi</option>
+        <option value="ISB">ISB</option>
+    </select>
+    <br />
+    
+    <span>Account Type:</span>
+    <select name="AccountType">
+        <option value="1">Student</option>
+        <option value="2">Teacher</option>
+    </select>
+    <br />
+    
+    <span>Login:</span>
+    @Html.EditorFor(p => p.Login) <br />
+    
+    <span>Password:</span>
+    @Html.EditorFor(p => p.Password) <br />
+    
+    
+    <input type="submit" value="Create" />
+}

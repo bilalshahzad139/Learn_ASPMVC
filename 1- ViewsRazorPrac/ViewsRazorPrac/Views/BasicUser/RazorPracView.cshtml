@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>First - Without Layout</title>
+</head>
+<body>
+
+    <h1>Without Layout Example + Razor Learning</h1>
+
+    <a href="http://www.asp.net/web-pages/tutorials/basics/2-introduction-to-asp-net-web-programming-using-the-razor-syntax" target="_blank">Check Razor Syntax Here</a>
+
+
+    <!-- Single statement blocks  -->
+    @{ int total = 7; }
+    @{ var myMessage = "Hello World"; }
+
+    @*Comment in Razor Syntax *@
+
+
+    <!-- Inline expressions -->
+    <div>Message: @myMessage</div>
+
+
+    <!-- Multi-statement block -->
+    @{
+            
+        /*To mix C# code with html, razor provides its own syntax, 
+             * use '@' to write one line C# code or @{} block to write             
+             * more lines
+             */
+
+        for (int i = 0; i < total; i++)
+        {
+            //It intelligently parses C# code from HTML code, you can mix wherever you want
+        
+        <span>Hello World @i</span> <br />
+        } 
+            
+    }
+
+    <br />
+    @{
+        //We can access any Class here as we can access in Controller or Model code   
+            
+        <table border="1">
+            <tr>
+                <td>Requested URL</td>
+                <td>Relative Path</td>
+                <td>Full Path</td>
+                <td>HTTP Request Type</td>
+            </tr>
+            <tr>
+                <td>@Request.Url</td>
+                <td>@Request.FilePath</td>
+                <td>@Request.MapPath(Request.FilePath)</td>
+                <td>@Request.RequestType</td>
+            </tr>
+        </table>
+            
+    }
+
+    <br />
+
+
+</body>
+</html>

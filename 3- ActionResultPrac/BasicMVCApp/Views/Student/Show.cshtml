@@ -1,0 +1,18 @@
+﻿@{
+    /*
+     * On this page 'Layout' property is not set, Layout will be searched in closest '_ViewStart.cshtml' page
+     * If this page doesn't want to use any layout (e.g. partial view), it can set 'Layout =null'
+     */ 
+ }
+
+
+@{
+    ViewBag.Title = "Show";
+}
+
+@* To render a 'partial view', we use this function, 'Partial methods returns the string *@
+@Html.Partial("UserDetails")
+
+
+
+<h2>Show</h2>

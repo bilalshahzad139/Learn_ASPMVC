@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section submenu{
+    <a href="/MoreComplexUser/Create1">By Request</a>
+    <a href='@Url.Content("~/MoreComplexUser/Create2")'>by 'FormsCollection' valueprovider</a>
+    <a href="@Url.Content("~/MoreComplexUser/Create3/")">by primitive 'Parameters'</a>
+    @Html.ActionLink("By Complex Type as Paramter", "Create4", "MoreComplexUser")
+    @Html.ActionLink("By More than one Complex Types as Paramter", "Create5", "MoreComplexUser")
+    @Html.ActionLink("By Complex Type as Paramter - Key based Array", "Create6", "MoreComplexUser")
+    @Html.ActionLink("Custom Model Binder", "Create7", "MoreComplexUser")
+}
+
+
+ @RenderBody()

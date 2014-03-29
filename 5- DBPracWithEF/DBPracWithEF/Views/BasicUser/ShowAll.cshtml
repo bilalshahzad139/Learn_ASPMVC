@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Show All";
+}
+
+@model List<DBPracWithEF.Models.Users>
+
+<h2>All Users</h2>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Gender</td>
+            <td>DOB</td>
+            <td>City</td>
+            <td>Login</td>
+            <td>Entry Date</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Gender</td>
+                <td>@item.DOB</td>
+                <td>@item.City</td>
+                <td>@item.Login</td>
+                <td>@item.EntryDate</td>
+                <td><a href="@Url.Content("~/BasicUser/EditUser/")@item.UserID">Edit</a> </td>
+                <td><a href="@Url.Content("~/BasicUser/DeleteUser/")@item.UserID">Delete</a> </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

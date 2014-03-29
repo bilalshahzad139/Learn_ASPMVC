@@ -1,0 +1,131 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Student";
+}
+
+<br />
+<div>
+
+    <input type="hidden" id="txtStudentID" value="0" />
+
+    Name:
+    <input type="text" id="txtName" />
+    <br />
+    Subject:
+    <input type="text" id="txtFatherName" />
+    <br />
+
+    <br />
+    <h3>Addresses</h3>
+    <a href="#" id="addAddress">Add Address</a>
+
+    <div class="addresses">
+    </div>
+    <br />
+    <button id="btnSave">Save</button>
+
+</div>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        //jquery Ready function
+        $(document).ready(function () {
+
+            $("#btnSave").click(function () {
+                SaveData();
+                return false;
+            });//End of btnCreate click function
+
+            $("#addAddress").click(function () {
+                CreateAddressRow();
+                return false;
+            });//End of btnCreate click function
+
+
+        });//End of Ready function
+
+        function SaveData() {
+            //Extract data from form controls
+            var stdObj = {};
+
+            stdObj.StudentID = $('#txtStudentID').val();
+            stdObj.StudentName = $('#txtName').val();
+            stdObj.FatherName = $('#txtFatherName').val();
+
+            stdObj.Addresses = [];
+
+            var counter = 0;
+
+            $('div.addresses div.address').each(function () {
+                
+                var addr = {};
+                
+                addr.City = $(this).find('input.city').val();
+                addr.ZipCode = $(this).find('input.zipcode').val();
+
+                stdObj.Addresses.push(addr);
+                
+            });
+
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8', //This line is important here to tell ASP.NET MVC to use JsonValueProvider
+                data: JSON.stringify(stdObj),
+                url: "/Student/SaveStudent",
+                success: function (data) {
+                    if (data.success) {
+                        alert(data.message);
+                    }
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            $.ajax(settings);
+
+        }//End of Save
+
+
+        function CreateAddressRow() {
+
+            var $div = $("<div>").addClass('address');
+
+            $div.append("City:");
+            var $inp = $("<input>").attr('type', 'text').addClass('city');
+            $div.append($inp);
+
+            $div.append("ZipCode:");
+            var $inp = $("<input>").attr('type', 'text').addClass('zipcode');
+            $div.append($inp);
+
+            //Create a hyperlink in memory
+            var $link = $("<a>").attr('href', '#').text('X');
+            //Attach click event to it
+            $link.click(function () {
+
+                //remove current div container
+                $(this).closest('div').remove();
+                return false;
+            });
+
+            $div.append($link);
+
+            //Add Address div in main container
+            $(".addresses").append($div);
+
+
+        }//End of CreateAddress
+
+
+
+    </script>
+
+}

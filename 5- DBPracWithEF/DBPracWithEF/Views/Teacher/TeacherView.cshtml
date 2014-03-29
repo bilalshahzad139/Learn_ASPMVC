@@ -1,0 +1,207 @@
+﻿@{
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Teacher";
+}
+
+<br />
+<div>
+
+    <input type="hidden" id="txtTeacherid" value="0" />
+
+    Name:
+    <input type="text" id="txtName" />
+    <br />
+    Subject:
+    <input type="text" id="txtSubject" />
+    <br />
+    EntryDate: <span id="spEntryDate"></span>
+    <br />
+
+    <button id="btnSave">Save</button>
+
+</div>
+
+<div>
+    <h1>All Teachers</h1>
+    <a href="#" id="lnkShowAllTeachers">Show All Teachers</a>
+
+    <div id="datacontainer">
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        //jquery Ready function
+        $(document).ready(function () {
+
+            $("#btnSave").click(function () {
+                SaveData();
+                return false;
+            });//End of btnCreate click function
+
+            $("#lnkShowAllTeachers").click(function () {
+                LoadData();
+                return false;
+            });//End of btnCreate click function
+
+        });//End of Ready function
+
+        function SaveData() {
+            //Extract data from form controls
+            var obj = {};
+
+            obj.TID = $('#txtTeacherid').val();
+            obj.Name = $('#txtName').val();
+            obj.Subject = $('#txtSubject').val();
+
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                data: obj,
+                url: "/Teacher/SaveTeacher",
+                success: function (data) {
+                    if (data.success) {
+                        alert(data.message);
+                    }
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            $.ajax(settings);
+
+        }
+
+        function LoadData() {
+            //Create Javascript object to pass to .ajax() function
+            var settings = {
+                type: "GET",
+                dataType: "json",
+                url: "/Teacher/GetAll",
+                success: function (data) {
+                    Generate(data);
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            jQuery.ajax(settings);
+        }
+
+        function Generate(data) {
+
+            var $divContainer = $("#datacontainer");
+            $divContainer.html('');
+
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+
+                var $div = $("<div>").addClass("userdetails");
+
+                var sp = $("<span>").text(obj.TID).addClass('tid');
+                $div.append(sp).append("<br>");
+
+                sp = $("<span>").text(obj.Name);
+                $div.append(sp).append("<br>");
+
+                sp = $("<span>").text(obj.Subject);
+                $div.append(sp).append("<br>");
+
+                sp = $("<span>").text(obj.CreatedOn);
+                $div.append(sp).append("<br>");
+
+
+                //Create a hyperlink in memory
+                var link = $("<a>").attr('href', '#').text('Edit').addClass('edit');
+
+                //Attach click event to it
+                link.click(function () {
+                    //find id of current record, go to nearest parent (which has class .userdetails)
+                    //and then find span which contains our record id
+                    var id = $(this).closest('.userdetails').find('span.tid').text();
+                    //call a function which will load data into fields after getting from server
+                    LoadById(id);
+                    return false;
+                });
+
+                //append link to our record div
+                $div.append(link);
+
+                //Create a link to 'delete' a record
+                link = $("<a>").attr('href', '#').text('Delete').addClass('delete');
+
+                //register click event to this link
+                link.click(function () {
+                    //find id of current record, go to nearest parent (which has class .userdetails)
+                    //and then find span which contains our record id
+                    var id = $(this).closest('.userdetails').find('span.tid').text();
+                    //call a function which will delete record by id
+                    DeleteById(id);
+                    return false;
+                });
+                //append link to our record div
+                $div.append(link);
+
+                //append our 'in memory div' to our physical div 
+                $divContainer.append($div);
+
+            }
+
+        }
+
+        function LoadById(id) {
+            var data = { tid: id };
+
+            var settings = {
+                type: "GET",
+                data: data,
+                dataType: "json",
+                url: "/Teacher/GetById",
+                success: function (obj) {
+                    $('#txtTeacherid').val(obj.TID);
+                    $('#txtName').val(obj.Name);
+                    $('#txtSubject').val(obj.Subject);
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            jQuery.ajax(settings);
+        }
+
+        function DeleteById(id) {
+            var data = { tid: id };
+
+            var settings = {
+                type: "GET",
+                data: data,
+                dataType: "json",
+                url: "/Teacher/DeleteById",
+                success: function (obj) {
+                    debugger;
+                    if (obj.success) {
+                        alert(obj.message);
+                    }
+                    LoadData();
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            jQuery.ajax(settings);
+        }
+
+    </script>
+
+}

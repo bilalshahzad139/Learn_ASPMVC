@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Home</h2>
+
+
+@using (Html.BeginForm("VerifyLogin", "Main", FormMethod.Post))
+{
+    <span>Login:</span> 
+    @Html.TextBox("Login"); 
+    <br />
+    <span>Password:</span> 
+    
+    @Html.Password("Password"); <br />
+    <input type="submit" value="Login" />
+
+    <span>@TempData["Msg"]</span>
+}

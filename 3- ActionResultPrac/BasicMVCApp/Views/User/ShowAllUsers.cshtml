@@ -1,0 +1,87 @@
+﻿@model List<BasicMVCApp.Models.User>
+
+@{
+    ViewBag.Title = "ShowAllUsers";
+}
+
+<h2>All Users</h2>
+
+@foreach (var item in @Model)
+{
+    <div class="userdetails">
+        Name: @item.username
+        <br />
+        Company: @item.company
+        <br />
+        Login: @item.login
+        <br />
+    </div>
+}
+
+<br />
+<div>
+    <a href="#" id="lnkShowAllByAjax">Show All By AJAX</a>
+    <div id="container">
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(MainFunction);
+
+    function MainFunction() {
+
+        $("#lnkShowAllByAjax").click(function (e) {
+
+            e.preventDefault();
+
+            $("#container").html("");
+
+            var settings = {
+                type: "GET",
+                dataType: "json",
+                async: true,
+                url: "/User/ShowAllByAjax",
+                success: function (data) {
+                    
+                    Generate(data);
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            jQuery.ajax(settings);
+
+
+            return false;
+
+        });//End of hyperlink Click
+
+
+        function Generate(data)
+        {
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+
+                var $div = $("<div class='userdetails'>");
+
+                $div.append("Name: " + obj.username);
+                $div.append("<br />");
+                $div.append("Company: " + obj.company);
+                $div.append("<br />");
+                $div.append("Login: " + obj.login);
+                $div.append("<br />");
+
+                $("#container").append($div);
+
+            }
+
+        }
+
+
+    }//End of Main Function
+
+</script>

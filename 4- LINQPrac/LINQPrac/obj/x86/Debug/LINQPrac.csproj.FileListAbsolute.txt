@@ -1,0 +1,4 @@
+D:\Dev Repository\Waqas\LINQPrac\LINQPrac\bin\Debug\LINQPrac.exe
+D:\Dev Repository\Waqas\LINQPrac\LINQPrac\bin\Debug\LINQPrac.pdb
+D:\Dev Repository\Waqas\LINQPrac\LINQPrac\obj\x86\Debug\LINQPrac.exe
+D:\Dev Repository\Waqas\LINQPrac\LINQPrac\obj\x86\Debug\LINQPrac.pdb

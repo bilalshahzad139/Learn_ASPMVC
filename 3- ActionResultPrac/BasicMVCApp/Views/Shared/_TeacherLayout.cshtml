@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+        console.log("_TeacherLayout scripts");
+    </script>
+
+    @RenderSection("scripts", required: false)
+}
+
+<div>
+    <ul>
+        <li>@Html.ActionLink("View() ViewResult", "View_Test", "Teacher")</li>
+        <li>@Html.ActionLink("PartialView() PartialViewResult", "PartialView_Test", "Teacher")</li>
+        <li>@Html.ActionLink("Redirect() RedirectResult", "Redirect_Test", "Teacher")</li>
+        <li>@Html.ActionLink("RedirectToAction() RedirectToRouteResult", "RedirectToAction_Test", "Teacher")</li>
+        <li>@Html.ActionLink("RedirectToRoute() RedirectToRouteResult", "RedirectToRoute1_Test", "Teacher")</li>
+        <li>@Html.ActionLink("RedirectToRoute() RedirectToRouteResult - with named Route Testing", "RedirectToRoute2_Test", "Teacher")</li>
+        <li>@Html.ActionLink("Content() ContentResult", "Content_Test", "Teacher")</li>
+        <li>@Html.ActionLink("HttpStatusCode() HttpStatusCodeResult", "HttpStatusCode_Test", "Teacher", new
+               {
+                   id = 404
+               }, null)
+        </li>
+        <li>@Html.ActionLink("Json() JsonResult", "Json_Test", "Teacher")</li>
+        <li>@Html.ActionLink("JavaScript() JavaScriptResult", "JavaScript_Test", "Teacher")</li>
+        <li>@Html.ActionLink("File() FilePathResult", "File1_Test", "Teacher")</li>
+        <li>@Html.ActionLink("File() FileStreamResult", "File2_Test", "Teacher")</li>
+        <li>@Html.ActionLink("File() FileContentResult", "File3_Test", "Teacher")</li>
+        <li>@Html.ActionLink("Other int ContentResult", "Other_Test", "Teacher")</li>
+        <li>@Html.ActionLink("Other DateTime ContentResult", "Other1_Test", "Teacher")</li>
+    </ul>
+
+
+</div>
+
+@RenderBody()

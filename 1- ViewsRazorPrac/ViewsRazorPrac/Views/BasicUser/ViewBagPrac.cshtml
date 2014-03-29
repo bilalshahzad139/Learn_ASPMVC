@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "ViewBag Practice";
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+}
+
+<h2>ViewBag Practice</h2>
+
+<span>ViewBag.ID: @ViewBag.ID</span> <br />
+<span>ViewBag.Message: @ViewBag.Message</span> <br />
+
+<br />
+
+@{
+    var a = ViewBag.Data as ViewsRazorPrac.Models.BasicUserDTO;
+ }
+
+
+<div>User Name: @a.UserName</div>
+<div>Company: @a.Company</div>
+
+

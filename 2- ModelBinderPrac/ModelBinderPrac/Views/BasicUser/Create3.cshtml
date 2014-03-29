@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_BasicUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "by primitive 'Parameters";
+}
+
+<h2>by primitive 'Parameters</h2>
+
+<div>
+    <form action="/BasicUser/SaveUser3" method="post">
+        <div>
+            Name:
+    <input type="text" name="UserName" id="username" />
+            <br />
+            Company:
+    <input type="text" name="Company" id="company" />
+            <br />
+            <hr />
+            Login:
+    <input type="text" name="Login" id="login" />
+            <br />
+            Password:<input type="Password" name="password" id="password" />
+            <br />
+            <input type="submit" value="Create" />
+            <br />
+            <span style="color: red">@ViewBag.Msg</span>
+        </div>
+    </form>
+
+</div>
+

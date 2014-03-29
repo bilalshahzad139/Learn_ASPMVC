@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_ComplexUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "By Request";
+}
+
+<h2>By Request</h2>
+
+<div>
+    <form action="/ComplexUser/SaveUser1" method="post">
+        <div>
+            Name:
+    <input type="text" name="UserName" id="username" />
+            <br />
+            Company:
+    <input type="text" name="Company" id="company" />
+            <br />
+            Country:
+    <input type="text" name="UserAddress.Country" id="country" />
+            <br />
+            City:
+    <input type="text" name="UserAddress.City" id="city" />
+            <br />
+            <hr />
+            Login:
+    <input type="text" name="Login" id="login" />
+            <br />
+            Password:<input type="Password" name="password" id="password" />
+            <br />
+            <input type="submit" value="Create" />
+            <br />
+            <span style="color: red">@ViewBag.Msg</span>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,32 @@
+﻿@*Here we are defining our 'model' variable and telling its type*@
+@model  BasicMVCApp.Models.Student
+
+
+@{
+    /*
+     * On this page 'Layout' property is not set, Layout will be searched in closest '_ViewStart.cshtml' page
+     * If this page doesn't want to use any layout (e.g. partial view), it can set 'Layout =null'
+     */ 
+ }
+
+
+@{
+    ViewBag.Title = "Show";
+}
+
+@* To render a partial view, we use this function, this returns nothing, so we need to use it in razor block *@
+@{
+    Html.RenderPartial("UserDetails");
+}
+
+@* To render a 'partial view', we use this function, this method returns the string *@
+@Html.Partial("UserDetails")
+
+
+
+<h2>Show 2</h2>
+
+@*To access provided object to view from controler, we use 'Model' object*@
+<p>Student ID: @Model.StudentID</p>
+<p>Name: @Model.Name</p>
+<p>Address: @Model.Address</p>

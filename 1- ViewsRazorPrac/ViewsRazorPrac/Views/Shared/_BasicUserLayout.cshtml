@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section submenu{
+    <a href="/BasicUser/Home">Basic User Home</a>
+    <a href="/BasicUser/RazorPracView">Without Layout + Razor Practice</a>
+    <a href="/BasicUser/ViewBagPrac">ViewBag Practice</a>
+    <a href="/BasicUser/ViewDataPrac">ViewData Practice</a>
+    <a href="/BasicUser/HtmlHelperPrac1">HTML Helper Prac 1</a>
+    <a href="/BasicUser/HtmlHelperPrac2">HTML Helper Prac 2</a>
+   
+}
+
+
+@RenderSection("mysection",required:false)
+
+ @RenderBody()

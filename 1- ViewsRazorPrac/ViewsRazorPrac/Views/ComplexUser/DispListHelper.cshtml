@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_ComplexUserLayout.cshtml";
+    ViewBag.Title = "ViewModel - List - HtmlHelper";
+}
+
+@* To use ViewModel, first we need to declare type of our 'ViewModel' object *@
+
+@model List<ViewsRazorPrac.Models.ComplexUserDTO>
+
+<h2>ViewModel - List - HtmlHelper</h2>
+
+
+@*To access provided object to view from controler, we use 'Model' object*@
+@for (var i=0; i<Model.Count; i++)
+{
+    //here item contains our single object of type 'ComplexUserDTO'
+    <div class="userdetails">
+
+        @Html.LabelFor(p=> p[i].UserName,"User Name"):
+        @Html.DisplayFor(p=> p[i].UserName)
+        <br />
+        @Html.LabelFor(p=> p[i].Company):
+        @Html.DisplayFor(p=> p[i].Company)
+        <br />
+        @Html.LabelFor(p=> p[i].Country):
+        @Html.DisplayFor(p=> p[i].Country)
+        <br />
+       
+    </div>
+}

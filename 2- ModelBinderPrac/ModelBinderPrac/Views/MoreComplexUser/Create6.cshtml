@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_MoreComplexUserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "By Complex Type as Paramter - Key based Array";
+}
+
+<h2>By Complex Type as Paramter - Key based Array</h2>
+
+<div>
+    <form action="/MoreComplexUser/SaveUser6" method="post">
+        <div>
+            Name:
+    <input type="text" name="UserName" id="username" />
+            <br />
+            Company:
+    <input type="text" name="Company" id="company" />
+            <br />
+        <input type="hidden" value="a1" name="UserAddresses.Index" />
+             Country1:
+    <input type="text" name="UserAddresses[a1].Country" id="country" />
+            <br />
+            City1:
+    <input type="text" name="UserAddresses[a1].City" id="city" />
+            <br />
+        <input type="hidden" value="a2" name="UserAddresses.Index" />
+            Country2:
+    <input type="text" name="UserAddresses[a2].Country" id="country2" />
+            <br />
+            City2:
+    <input type="text" name="UserAddresses[a2].City" id="city2" />
+            <br />
+            <hr />
+            Login:
+    <input type="text" name="Login" id="login" />
+            <br />
+            Password:<input type="Password" name="password" id="password" />
+            <br />
+            <input type="submit" value="Create" />
+            <br />
+            <span style="color: red">@ViewBag.Msg</span>
+        </div>
+    </form>
+
+</div>
+

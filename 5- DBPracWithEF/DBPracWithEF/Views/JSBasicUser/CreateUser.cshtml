@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "~/Views/Shared/_JSBasicUserLayout.cshtml";
+    ViewBag.Title = "Create User";
+}
+
+
+<form action='@Url.Content("~/JSBasicUser/SaveUser")' method="post">
+
+    <input type="hidden" value="0" id="userid" />
+
+    <span>First Name:</span>
+    <input type="text" id="txtfirstname" />
+    <br />
+
+    <span>Last Name:</span>
+    <input type="text" id="txtlastname" />
+    <br />
+
+    <span>Gender:</span>
+    <select id="ddlGender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <br />
+
+    <span>DOB:</span>
+    <input type="text" id="txtdob" />
+    <br />
+
+    <span>City:</span>
+    <select id="ddlcity">
+        <option value="Lahore">Lahore</option>
+        <option value="Karachi">Karachi</option>
+        <option value="ISB">ISB</option>
+    </select>
+    <br />
+
+    <span>Account Type:</span>
+    <select id="ddlAccountType">
+        <option value="1">Student</option>
+        <option value="2">Teacher</option>
+    </select>
+    <br />
+
+    <span>Login:</span>
+    <input type="text" id="txtLogin" />
+    <br />
+
+    <span>Password:</span>
+    <input type="password" id="txtPassword" />
+    <br />
+
+
+    <input type="submit" value="Create" id="btnCreate" />
+</form>
+
+@section scripts{
+
+<script type="text/javascript">
+
+    //jquery Ready function
+    $(document).ready(function () {
+
+        $("#btnCreate").click(function () {
+
+            //Extract data from form controls
+            var obj = {};
+
+            obj.UserID = $('#userid').val();
+            obj.FirstName = $('#txtfirstname').val();
+            obj.LastName = $('#txtlastname').val();
+            obj.Gender = $('#ddlGender').val();
+            obj.DOB = $('#txtdob').val();
+            obj.City = $('#ddlcity').val();
+            obj.AccountType = $('#ddlAccountType').val();
+            obj.Login = $('#txtLogin').val();
+            obj.Password = $('#txtPassword').val();
+
+
+            //var dataToSend = JSON.stringify(obj);
+
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                data: obj,
+                url: "/JSBasicUser/SaveUser",
+                success: function (data) {
+                    if (data.success)
+                    {
+                        alert(data.message);
+                        
+                    }
+                },
+                error: function (err, type, httpStatus) {
+                    alert(err.status + " - " + err.responseText + " - " + httpStatus);
+                }
+            };
+
+            $.ajax(settings);
+
+            return false;
+        });//End of btnCreate click function
+
+    });//End of Ready function
+
+</script>
+    
+    
+}

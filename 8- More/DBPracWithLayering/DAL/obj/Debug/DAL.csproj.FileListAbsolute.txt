@@ -1,0 +1,9 @@
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\DAL.dll
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\DAL.pdb
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\Entities.dll
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\EntityFramework.dll
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\Entities.pdb
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\bin\Debug\EntityFramework.xml
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\obj\Debug\DAL.dll
+c:\users\bshahzad\documents\visual studio 2012\Projects\MvcApplication3\DAL\obj\Debug\DAL.pdb

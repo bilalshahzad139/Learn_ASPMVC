@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+        console.log("_UserLayout scripts");
+    </script>
+
+    @RenderSection("scripts", required: false)
+}
+
+<div>
+    <ul>
+        <li>@Html.ActionLink("Home", "Dashboard", "User")</li>
+        <li>@Html.ActionLink("New User", "NewUser", "User")</li>
+        <li>@Html.ActionLink("Show All", "ShowAll", "User")</li>
+        <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+    </ul>
+
+
+</div>
+
+@RenderBody()

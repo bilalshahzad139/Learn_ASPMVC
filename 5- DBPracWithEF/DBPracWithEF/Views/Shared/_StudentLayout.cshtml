@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section submenu{
+    <a href="/Student/Home">Home</a>
+    <a href="/Student/StudentView">Add Student</a>
+
+}
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+}
+
+@RenderBody()
